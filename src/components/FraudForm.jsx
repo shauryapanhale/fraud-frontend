@@ -234,11 +234,12 @@ export default function FraudForm({ onResult }) {
     setLoading(true)
     setError(null)
     try {
-      const res = await axios.post('http://localhost:8000/predict', form, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/predict`, form, {
   headers: {
     'X-API-Key': import.meta.env.VITE_API_KEY
   }
 })
+
 
       onResult({ ...res.data, ...form })
     } catch {
